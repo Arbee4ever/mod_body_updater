@@ -23,12 +23,12 @@ async function handleRequest(event) {
                 Authorization: MODRINTH_TOKEN,
                 "User-Agent": "https://github.com/Arbee4ever/arbeeco.de (arbeeco.de)",
             },
-            body: data
+            body: JSON.stringify(data)
         });
         if (response.ok) {
             return new Response("Success! " + await response.text());
         } else {
-            return new Response("Error: " + await response.text())
+            return new Response(await response.text())
         }
     }
     return new Response("Commit didn't modify README.md or description.");
