@@ -26,6 +26,32 @@ async function handleRequest(event) {
             body: JSON.stringify(data)
         });
         if (response.ok) {
+            const message = {
+                "content": null,
+                "embeds": [
+                    {
+                        "title": "[" + githubdata.repository.name + "] Modrinth body updated!",
+                        "url": githubdata.head_commit.url,
+                        "description": data.body,
+                        "color": 3191419,
+                        "author": {
+                            "name": githubdata.head_commit.author.name,
+                            "url": "https://github.com/" + githubdata.head_commit.author.username,
+                            "icon_url": "https://github.com/" + githubdata.head_commit.author.username + ".png"
+                        }
+                    }
+                ],
+                "attachments": []
+            }
+            let discordresponse = await fetch("https://discord.com/api/webhooks/1012268523583705098/xbVDY0nr5e3I7Npsepm7ZafrGVtAUQMWPjRV8Gst9s-Q2LbB-gR_qJo2FRmSlJK7vMcy", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: MODRINTH_TOKEN,
+                    "User-Agent": "https://github.com/Arbee4ever/arbeeco.de (arbeeco.de)",
+                },
+                body: JSON.stringify(message)
+            });
             return new Response("Success! " + await response.text());
         } else {
             return new Response(await response.text())
