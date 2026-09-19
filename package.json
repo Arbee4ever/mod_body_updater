@@ -1,12 +1,16 @@
 {
   "name": "mod_body_updater",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "devDependencies": {
-    "wrangler": "2.0.27"
+    "wrangler": "^4.135.0"
   },
   "private": true,
   "scripts": {
     "start": "wrangler dev",
-    "deploy": "wrangler publish"
+    "deploy": "wrangler deploy"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "workerd@1.20260918.1": true
   }
 }
