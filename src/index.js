@@ -43,7 +43,7 @@ async function handleRequest(event) {
                 ],
                 "attachments": []
             }
-            let discordresponse = await fetch("https://discord.com/api/webhooks/1012268523583705098/xbVDY0nr5e3I7Npsepm7ZafrGVtAUQMWPjRV8Gst9s-Q2LbB-gR_qJo2FRmSlJK7vMcy", {
+            let discordresponse = await fetch(DISCORD_WEBHOOK, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
